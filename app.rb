@@ -3,7 +3,7 @@ require 'sinatra/activerecord'
 
 class App < Sinatra::Application
 	before do
-		content_type :json
+		content_type :html
 	end
 
 	helpers do
@@ -11,7 +11,7 @@ class App < Sinatra::Application
 	end
 
 	configure :development do
-		set :database, 'sqlite:///climatecolab.db'
+		set :database, "sqlite3://#{Dir.pwd}/climatecolab.db"
 		set :show_exceptions, true
 	end
 
