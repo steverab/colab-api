@@ -11,7 +11,13 @@ class App < Sinatra::Application
 	end
 
 	configure :development do
-		set :database, "sqlite3://#{Dir.pwd}/climatecolab.db"
+		ActiveRecord::Base.establish_connection(
+			:adapter  => "mysql2",
+			:host     => "localhost",
+			:username => "root",
+			:password => "masterkey",
+			:database => "climatecolab"
+		)
 		set :show_exceptions, true
 	end
 
