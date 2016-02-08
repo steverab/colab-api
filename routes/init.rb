@@ -1,1 +1,1 @@
-require_relative 'errors'x
+require_relative 'errors'
