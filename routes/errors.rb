@@ -1,7 +1,9 @@
 class App < Sinatra::Application
   before do
-    content_type 'text/plain'
+    content_type :txt
   end
+  
+  # Standard errors
   
   not_found do
     '404 - Not Found'
@@ -22,4 +24,11 @@ class App < Sinatra::Application
   error do
     '500 - Internal Server Error'
   end
+  
+  # ActiveRecord errors
+  
+  error ActiveRecord::RecordNotFound do
+    halt 404
+  end
+  
 end
