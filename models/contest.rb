@@ -1,3 +1,3 @@
 class Contest < ActiveRecord::Base
-  belongs_to :user
+  has_one :user, foreign_key: "id"
 end
