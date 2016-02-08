@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208034605) do
+ActiveRecord::Schema.define(version: 20160208131708) do
 
   create_table "contests", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20160208034605) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  add_index "contests", ["author_id"], name: "fk_rails_b4cc7f432f", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",  limit: 255
@@ -33,4 +35,5 @@ ActiveRecord::Schema.define(version: 20160208034605) do
     t.datetime "updated_at",                null: false
   end
 
+  add_foreign_key "contests", "users", column: "author_id", on_update: :cascade, on_delete: :cascade
 end
