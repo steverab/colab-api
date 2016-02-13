@@ -1,3 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :contests, foreign_key: "author_id"
+  has_many :contest_user_roles
+  has_many :contests, through: :contest_user_roles
+  has_many :roles, through: :contest_user_roles
 end
