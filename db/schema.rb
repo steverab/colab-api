@@ -11,18 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208131708) do
+ActiveRecord::Schema.define(version: 20160213174845) do
+
+  create_table "contest_user_roles", force: :cascade do |t|
+    t.integer  "contest_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "role_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "contest_user_roles", ["contest_id"], name: "index_contest_user_roles_on_contest_id", using: :btree
+  add_index "contest_user_roles", ["role_id"], name: "index_contest_user_roles_on_role_id", using: :btree
+  add_index "contest_user_roles", ["user_id"], name: "index_contest_user_roles_on_user_id", using: :btree
 
   create_table "contests", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "short_name",  limit: 65535
     t.text     "description", limit: 65535
-    t.integer  "author_id",   limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
 
-  add_index "contests", ["author_id"], name: "fk_rails_b4cc7f432f", using: :btree
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",  limit: 255
@@ -35,5 +50,7 @@ ActiveRecord::Schema.define(version: 20160208131708) do
     t.datetime "updated_at",                null: false
   end
 
-  add_foreign_key "contests", "users", column: "author_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "contest_user_roles", "contests", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "contest_user_roles", "roles", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "contest_user_roles", "users", on_update: :cascade, on_delete: :cascade
 end
