@@ -1,1 +1,1 @@
-# ClimateCoLab-API
+# CoLab-API

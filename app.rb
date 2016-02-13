@@ -3,7 +3,7 @@ require 'sinatra/activerecord'
 
 class App < Sinatra::Application
 	before do
-		content_type :html
+		content_type :json
 	end
 
 	helpers do
@@ -36,7 +36,7 @@ end
 
 	get "/" do
 		content_type :txt
-    "Welcome to the Climate CoLab API!"
+    "Welcome to the CoLab API!"
   end
 end
 
