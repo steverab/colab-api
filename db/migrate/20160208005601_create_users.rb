@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.text :short_bio
+
+      t.timestamps null: false
     end
-    
-    add_timestamps(:users, null: false)
   end
 end

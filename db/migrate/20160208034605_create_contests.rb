@@ -4,9 +4,8 @@ class CreateContests < ActiveRecord::Migration
       t.string :name
       t.text :short_name
       t.text :description
-      t.integer :author_id
-    end
 
-    add_timestamps(:contests, null: false)
+      t.timestamps null: false
+    end
   end
 end
