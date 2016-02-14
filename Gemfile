@@ -6,6 +6,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'thin'
 gem 'rake'
+gem 'rest-client'
 
 group :development do
  gem 'mysql2'
