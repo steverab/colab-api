@@ -10,9 +10,11 @@ class App < Sinatra::Application
 	before do
 		content_type :json
 
-		if Sinatra::Base.production?
+		@colab_logging_enabled = false
 
-			response = RestClient.get "http://ip-api.com/json/18.189.23.225?fields=38911"
+		if @colab_logging_enabled && Sinatra::Base.production? 
+
+			response = RestClient.get "http://ip-api.com/json/#{request.ip}?fields=38911"
 			parsed_response = JSON.parse(response)
 
 			# TODO: Link to user if possible
