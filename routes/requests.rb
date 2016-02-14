@@ -9,8 +9,8 @@ class App < Sinatra::Application
 	# ------------------------
 
 	get "/requests" do
-		@request = Request.all
-		@request.to_json
+		requests = Request.all
+		requests.to_json
 	end
 
 end
