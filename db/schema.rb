@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213174845) do
+ActiveRecord::Schema.define(version: 20160214040600) do
 
   create_table "contest_user_roles", force: :cascade do |t|
     t.integer  "contest_id", limit: 4
@@ -33,6 +33,31 @@ ActiveRecord::Schema.define(version: 20160213174845) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.string   "ip",           limit: 255, null: false
+    t.string   "path",         limit: 255, null: false
+    t.string   "method",       limit: 255, null: false
+    t.string   "query_string", limit: 255
+    t.string   "user_agent",   limit: 255, null: false
+    t.string   "city",         limit: 255
+    t.string   "region_code",  limit: 255
+    t.string   "region",       limit: 255
+    t.string   "zip",          limit: 255
+    t.string   "country",      limit: 255
+    t.string   "country_code", limit: 255
+    t.integer  "lat",          limit: 4
+    t.integer  "lon",          limit: 4
+    t.string   "isp",          limit: 255
+    t.string   "organization", limit: 255
+    t.string   "reverse",      limit: 255
+    t.string   "timezone",     limit: 255
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.datetime "created_at",             null: false
@@ -53,4 +78,5 @@ ActiveRecord::Schema.define(version: 20160213174845) do
   add_foreign_key "contest_user_roles", "contests", on_update: :cascade, on_delete: :cascade
   add_foreign_key "contest_user_roles", "roles", on_update: :cascade, on_delete: :cascade
   add_foreign_key "contest_user_roles", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "requests", "users", on_update: :cascade, on_delete: :cascade
 end
