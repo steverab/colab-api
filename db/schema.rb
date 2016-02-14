@@ -34,26 +34,26 @@ ActiveRecord::Schema.define(version: 20160214040600) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.string   "ip",           limit: 255, null: false
-    t.string   "path",         limit: 255, null: false
-    t.string   "method",       limit: 255, null: false
+    t.string   "ip",           limit: 255,                null: false
+    t.string   "path",         limit: 255,                null: false
+    t.string   "method",       limit: 255,                null: false
     t.string   "query_string", limit: 255
-    t.string   "user_agent",   limit: 255, null: false
+    t.string   "user_agent",   limit: 255,                null: false
     t.string   "city",         limit: 255
     t.string   "region_code",  limit: 255
     t.string   "region",       limit: 255
     t.string   "zip",          limit: 255
     t.string   "country",      limit: 255
     t.string   "country_code", limit: 255
-    t.integer  "lat",          limit: 4
-    t.integer  "lon",          limit: 4
+    t.decimal  "lat",                      precision: 10
+    t.decimal  "lon",                      precision: 10
     t.string   "isp",          limit: 255
     t.string   "organization", limit: 255
     t.string   "reverse",      limit: 255
     t.string   "timezone",     limit: 255
     t.integer  "user_id",      limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
