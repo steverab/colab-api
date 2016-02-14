@@ -13,8 +13,8 @@ class CreateRequests < ActiveRecord::Migration
       t.string :zip
       t.string :country
       t.string :country_code
-      t.integer :lat
-      t.integer :lon
+      t.decimal :lat
+      t.decimal :lon
 
       t.string :isp
       t.string :organization
