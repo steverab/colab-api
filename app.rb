@@ -10,7 +10,7 @@ class App < Sinatra::Application
 	before do
 		content_type :json
 
-		if Sinatra::Base.production? && ENV['COLAB_REQUEST_LOGGING'] == "enabled"
+		if Sinatra::Base.production? && ENV['COLAB_REQUEST_LOGGING'].present?
 
 			response = RestClient.get "http://ip-api.com/json/#{request.ip}?fields=38911"
 			parsed_response = JSON.parse(response)
