@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214040600) do
+ActiveRecord::Schema.define(version: 20160215224044) do
 
   create_table "contest_user_roles", force: :cascade do |t|
     t.integer  "contest_id", limit: 4
@@ -65,14 +65,16 @@ ActiveRecord::Schema.define(version: 20160214040600) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",  limit: 255
-    t.string   "last_name",   limit: 255
-    t.string   "screen_name", limit: 255
-    t.string   "email",       limit: 255
-    t.string   "password",    limit: 255
-    t.text     "short_bio",   limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "first_name",      limit: 255
+    t.string   "last_name",       limit: 255
+    t.string   "screen_name",     limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password",        limit: 255
+    t.text     "short_bio",       limit: 65535
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.boolean  "is_admin",                      default: false,                     null: false
+    t.string   "profile_picture", limit: 255,   default: "default_profile_picture", null: false
   end
 
   add_foreign_key "contest_user_roles", "contests", on_update: :cascade, on_delete: :cascade
