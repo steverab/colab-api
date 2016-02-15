@@ -39,7 +39,7 @@ class App < Sinatra::Application
 
 		if users == nil || users.empty?
 			halt 404, "Not Found"
-		elsif user.count > 1
+		elsif users.count > 1
 			halt 500, "Something went terribly wrong: two users with same email address in DB"
 		else
 			user = users.first
