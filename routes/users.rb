@@ -13,7 +13,7 @@ class App < Sinatra::Application
 		@users.to_json(:except => [:password, :updated_at])
 	end
 
-	post "/users/signup" do
+	post "/users" do
 		firstName = params[:first_name]
 		lastName = params[:last_name]
 		screenName = params[:screen_name]
