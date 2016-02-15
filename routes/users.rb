@@ -10,7 +10,7 @@ class App < Sinatra::Application
 
 	get "/users" do
 		users = User.all
-		users.to_json(:except => [:password, :updated_at])
+		users.to_json(:except => [:password, :updated_at, :is_admin])
 	end
 
 	post "/users" do
@@ -23,12 +23,12 @@ class App < Sinatra::Application
 
 		user = User.create(:first_name => firstName, :last_name => lastName, :screen_name => screenName, :email => email, :password => password, :short_bio => shortBio)
 
-		user.to_json(:except => [:password, :updated_at])
+		user.to_json(:except => [:password, :updated_at, :is_admin])
 	end
 
 	get "/users/:id" do
 		user = User.find(params[:id])
-		user.to_json(:except => [:password, :updated_at])
+		user.to_json(:except => [:password, :updated_at, :is_admin])
 	end
 
 	post "/users/login" do
@@ -43,7 +43,7 @@ class App < Sinatra::Application
 			halt 500, "Something went terribly wrong: two users with same email address in DB"
 		else
 			user = users.first
-			user.to_json(:except => [:password, :updated_at])
+			user.to_json(:except => [:password, :updated_at, :is_admin])
 		end
 	end
 
