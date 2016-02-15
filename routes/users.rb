@@ -31,4 +31,10 @@ class App < Sinatra::Application
 		@user.to_json(:except => [:password, :updated_at])
 	end
 
+	post "/users/login" do
+		password = Digest::SHA256.hexdigest params[:password]
+		@user = User.where("email = ? AND password = ?", params[:email], password)
+		@user.to_json(:except => [:password, :updated_at])
+	end
+
 end
