@@ -35,9 +35,16 @@ class App < Sinatra::Application
 		email = params[:email]
 		password = Digest::SHA256.hexdigest params[:password]
 
-		user = User.where("email = ? AND password = ?", email, password).first
+		users = User.where("email = ? AND password = ?", email, password)
 
-		user.to_json(:except => [:password, :updated_at])
+		if users == nil || users.empty?
+			halt 404, "Not Found"
+		elsif user.count > 1
+			halt 500, "Something went terribly wrong: two users with same email address in DB"
+		else
+			user = users.first
+			user.to_json(:except => [:password, :updated_at])
+		end
 	end
 
 end
