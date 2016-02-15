@@ -4,12 +4,12 @@
 # Create sample users
 # ------------------------------------------------------
 
-User.create(:first_name => "Stephan", :last_name => "Rabanser", :screen_name => "rabanser", :email => "rabanser@mit.edu", :password => "test", :short_bio => nil)
-User.create(:first_name => "Thomas", :last_name => "Malone", :screen_name => "malone", :email => "malone@mit.edu", :password => "test", :short_bio => nil)
-User.create(:first_name => "Laur", :last_name => "Fisher", :screen_name => "fisher", :email => "lfi@mit.edu", :password => "test", :short_bio => nil)
-User.create(:first_name => "Robert", :last_name => "Laubacher", :screen_name => "laubacher", :email => "rjl@mit.edu", :password => "test", :short_bio => nil)
-User.create(:first_name => "Johannes", :last_name => "Bachhuber", :screen_name => "bachhuber", :email => "jobachhu@mit.edu", :password => "test", :short_bio => nil)
-User.create(:first_name => "Carlos", :last_name => "Botelho", :screen_name => "botelho", :email => "carlosbp@mit.edu", :password => "test", :short_bio => nil)
+User.create(:first_name => "Stephan", :last_name => "Rabanser", :screen_name => "rabanser", :email => "rabanser@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
+User.create(:first_name => "Thomas", :last_name => "Malone", :screen_name => "malone", :email => "malone@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
+User.create(:first_name => "Laur", :last_name => "Fisher", :screen_name => "fisher", :email => "lfi@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
+User.create(:first_name => "Robert", :last_name => "Laubacher", :screen_name => "laubacher", :email => "rjl@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
+User.create(:first_name => "Johannes", :last_name => "Bachhuber", :screen_name => "bachhuber", :email => "jobachhu@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
+User.create(:first_name => "Carlos", :last_name => "Botelho", :screen_name => "botelho", :email => "carlosbp@mit.edu", :password => "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", :short_bio => nil)
 
 # ------------------------------------------------------
 # Create sample contests

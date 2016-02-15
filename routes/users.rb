@@ -9,8 +9,8 @@ class App < Sinatra::Application
 	# ------------------------
 
 	get "/users" do
-		@users = User.all
-		@users.to_json(:except => [:password, :updated_at])
+		users = User.all
+		users.to_json(:except => [:password, :updated_at])
 	end
 
 	post "/users" do
@@ -21,20 +21,23 @@ class App < Sinatra::Application
 		password = Digest::SHA256.hexdigest params[:password]
 		shortBio = params[:short_bio]
 
-		@user = User.create(:first_name => firstName, :last_name => lastName, :screen_name => screenName, :email => email, :password => password, :short_bio => shortBio)
+		user = User.create(:first_name => firstName, :last_name => lastName, :screen_name => screenName, :email => email, :password => password, :short_bio => shortBio)
 
-		@user.to_json(:except => [:password, :updated_at])
+		user.to_json(:except => [:password, :updated_at])
 	end
 
 	get "/users/:id" do
-		@user = User.find(params[:id])
-		@user.to_json(:except => [:password, :updated_at])
+		user = User.find(params[:id])
+		user.to_json(:except => [:password, :updated_at])
 	end
 
 	post "/users/login" do
+		email = params[:email]
 		password = Digest::SHA256.hexdigest params[:password]
-		@user = User.where("email = ? AND password = ?", params[:email], password).first
-		@user.to_json(:except => [:password, :updated_at])
+
+		user = User.where("email = ? AND password = ?", email, password).first
+
+		user.to_json(:except => [:password, :updated_at])
 	end
 
 end
