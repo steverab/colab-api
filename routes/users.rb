@@ -20,8 +20,9 @@ class App < Sinatra::Application
 		email = params[:email]
 		password = Digest::SHA256.hexdigest params[:password]
 		shortBio = params[:short_bio]
+		profilePicture = params[:profile_picture]
 
-		user = User.create(:first_name => firstName, :last_name => lastName, :screen_name => screenName, :email => email, :password => password, :short_bio => shortBio)
+		user = User.create(:first_name => firstName, :last_name => lastName, :screen_name => screenName, :email => email, :password => password, :short_bio => shortBio, :profile_picture => profilePicture)
 
 		user.to_json(:except => [:password, :updated_at])
 	end
