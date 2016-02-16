@@ -1,34 +1,34 @@
 class App < Sinatra::Application
   before do
-    content_type :txt
-  end
-  
-  # Standard errors
-  
-  not_found do
-    '404 - Not Found'
+    content_type :json
   end
 
+  # Standard errors
+
   error 401 do
-    '401 - Unauthorized'
+    {:status => 401, :message => "Unauthorized"}.to_json
   end
 
   error 403 do
-    '403 - Forbidden'
+    {:status => 403, :message => "Forbidden"}.to_json
+  end
+
+  not_found do
+    {:status => 404, :message => "Not Found"}.to_json
   end
 
   error 426 do
-    '426 - Upgrade Required'
+    {:status => 426, :message => "Upgrade Required"}.to_json
   end
 
   error do
-    '500 - Internal Server Error'
+    {:status => 500, :message => "Internal Server Error"}.to_json
   end
-  
+
   # ActiveRecord errors
-  
+
   error ActiveRecord::RecordNotFound do
     halt 404
   end
-  
+
 end

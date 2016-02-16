@@ -38,9 +38,9 @@ class App < Sinatra::Application
 		users = User.where("email = ? AND password = ?", email, password)
 
 		if users == nil || users.empty?
-			halt 404, "Not Found"
+			halt 404
 		elsif users.count > 1
-			halt 500, "Something went terribly wrong: two users with same email address in DB"
+			halt 500
 		else
 			user = users.first
 			user.to_json(:except => [:password, :updated_at])
