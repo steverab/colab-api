@@ -17,6 +17,10 @@ class App < Sinatra::Application
     {:status => 404, :message => "Not Found"}.to_json
   end
 
+  error 422 do
+    {:status => 422, :message => "Unprocessable Entity"}.to_json
+  end
+
   error 426 do
     {:status => 426, :message => "Upgrade Required"}.to_json
   end
