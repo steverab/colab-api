@@ -33,21 +33,27 @@ class App < Sinatra::Application
 	end
 
 	put "/users/:id" do
-		data = JSON.parse(request.body.string)
+		begin
+			data = JSON.parse(request.body.string)
 
-		data.each do |key, value|
-			if key == "created_at" || key == "updated_at" || key == "is_admin" || key == "profile_picture"
-				data.delete(key)
+			data.each do |key, value|
+				if key == "created_at" || key == "updated_at" || key == "is_admin" || key == "profile_picture"
+					data.delete(key)
+				end
 			end
-		end
 
-		if data["password"].present?
-			data["password"] = Digest::SHA256.hexdigest data["password"]
-		end
+			if data["password"].present?
+				data["password"] = Digest::SHA256.hexdigest data["password"]
+			end
 
-		user = User.find(params[:id])
-		user.update(data)
-		user.to_json(:except => [:password, :updated_at])
+			user = User.find(params[:id])
+			user.update(data)
+			user.to_json(:except => [:password, :updated_at])
+		rescue JSON::ParserError => e
+			halt 422
+		rescue Exception => e
+			halt 500
+		end
 	end
 
 	post "/users/login" do
